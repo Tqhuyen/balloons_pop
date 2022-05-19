@@ -39,3 +39,11 @@ class Game():
             self.update(dt)
             self.render()
             pygame.display.update()
+
+if __name__ == "__main__":
+    pygame.init()
+    window = pygame.display.set_mode((commons.screen_w, commons.screen_h))
+    pygame.display.set_caption("Balloon Pop")
+    game = Game(window)
+    while game.running:
+        game.run()
