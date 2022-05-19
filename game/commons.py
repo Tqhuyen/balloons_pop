@@ -1,0 +1,14 @@
+screen_w = 1024
+screen_h = 720
+dt = 0.0
+fps = 30
+music_volume = 0.0
+sfx_volume = 0.0
+speed_balloon = 3
+score = 0
+score_red = 10
+score_green = 20
+score_blue_green = 30
+score_black = 50
+gameplay_total_time = 31
+time_remain = 20
