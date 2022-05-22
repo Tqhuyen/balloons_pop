@@ -1,5 +1,7 @@
 import pygame
 import commons
+from states.state_logo import LogoState
+
 
 class Game():
     def __init__(self, window):
@@ -8,6 +10,7 @@ class Game():
         self.window_rect = self.window.get_rect()
         self.clock = pygame.time.Clock()
         self.fps = commons.fps
+
         self.state_stack = []
         self.load_states()
 
@@ -24,7 +27,8 @@ class Game():
                     self.pause = False
 
     def load_states(self):
-        pass
+        self.logo = LogoState(self)
+        self.state_stack.append(self.logo)
 
     def update(self, dt):
         self.state_stack[-1].update(dt)
