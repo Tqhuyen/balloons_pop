@@ -14,7 +14,6 @@ class LogoState(State):
     def update(self, dt):
         pass
 
-
     def render(self, window):
         window.fill(pygame.Color("black"))
         self.logo_img.render(window)

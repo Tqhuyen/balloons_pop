@@ -1,0 +1,51 @@
+import pygame
+
+from src.gui.button import Button
+from src.assets.text import AddText
+from src.assets.image import AddImage
+
+from src.states.base import State
+
+class MainMenuState(State):
+    def __init__(self, game):
+        super(MainMenuState, self).__init__(game)
+
+        # Background
+        self.img_background = AddImage("../resources/images/Sky.png", self.game.window_rect.center)
+
+        # Balloons
+        self.img_balloons = AddImage("../resources/images/Balloons.png", self.game.window_rect.center)
+
+        # Title
+        self.text_titleTop = AddText("BALLOON POP", "white", 84,
+                            (self.game.window_rect.centerx, self.game.window_rect.centery - 100))
+        self.text_titleBot = AddText("BALLOON POP", "white", 84,
+                            (self.game.window_rect.centerx, self.game.window_rect.centery - 94))
+
+        # Buttons
+        self.btn_start = Button("START", 200, 40,
+                            (self.game.window_rect.centerx - 70, self.game.window_rect.centery + 50), 6)
+        self.btn_options = Button("OPTIONS", 200, 40,
+                            (self.game.window_rect.centerx - 70, self.game.window_rect.centery + 110), 6)
+        self.btn_quit = Button("QUIT", 200, 40,
+                            (self.game.window_rect.centerx - 70, self.game.window_rect.centery + 170), 6)
+
+    def update(self, dt):
+        if self.btn_start.pressed:
+            pass
+
+        if self.btn_options.pressed:
+            pass
+
+        if self.btn_quit.pressed:
+            self.game.playing = False
+            self.game.running = False
+
+    def render(self, window):
+        self.img_background.render(window)
+        self.img_balloons.render(window)
+        self.text_titleBot.render(window)
+        self.text_titleTop.render(window)
+        self.btn_start.render(window)
+        self.btn_options.render(window)
+        self.btn_quit.render(window)

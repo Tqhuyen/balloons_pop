@@ -1,9 +1,9 @@
 import pygame
 
 class AddText:
-    def __init__(self, text, font, color, size, pos):
+    def __init__(self, text, color, size, pos):
         try:
-            self.font = pygame.font.Font(font, size)
+            self.font = pygame.font.Font("../resources/fonts/SweetUnicorn.ttf", size)
             self.text = self.font.render(text, True, pygame.Color(color))
             self.text_rect = self.text.get_rect(center=pos)
         except FileNotFoundError:

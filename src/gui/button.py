@@ -17,7 +17,7 @@ class Button:
         self.bottom_color = '#354B5E'
 
         # Text
-        self.text = AddText(text, '../resources/fonts/SweetUnicorn.ttf', 'white', 20, self.top_rect.center)
+        self.text = AddText(text, 'white', 20, self.top_rect.center)
 
         # Sound
         self.btn_click = pygame.mixer.Sound("../resources/sounds/button_click.wav")
