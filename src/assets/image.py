@@ -7,6 +7,8 @@ class AddImage:
             self.image_rect = self.image.get_rect(center=pos)
         except FileNotFoundError:
             raise FileNotFoundError("The File cannot be found in the 'resources/images' folder!")
+        else:
+            file_path = " "
 
     def scale(self, scale_size):
         return pygame.transform.scale(self.image, scale_size)

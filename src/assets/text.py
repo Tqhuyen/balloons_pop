@@ -8,6 +8,8 @@ class AddText:
             self.text_rect = self.text.get_rect(center=pos)
         except FileNotFoundError:
             raise FileNotFoundError("The File cannot be found in the 'resources/fonts' folder!")
+        else:
+            self.font = pygame.font.Font(None, size)
 
     def render(self, window):
         window.blit(self.text, self.text_rect)
