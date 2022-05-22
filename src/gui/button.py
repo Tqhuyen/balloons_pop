@@ -1,4 +1,5 @@
 import pygame
+from src import commons
 from src.assets.text import AddText
 
 class Button:
@@ -21,6 +22,7 @@ class Button:
 
         # Sound
         self.btn_click = pygame.mixer.Sound("../resources/sounds/button_click.wav")
+        self.btn_click.set_volume(commons.sfx_volume)
 
     def check_click(self):
         mouse_pos = pygame.mouse.get_pos()
