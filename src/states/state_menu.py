@@ -19,7 +19,7 @@ class MainMenuState(State):
         # Title
         self.text_titleTop = AddText("BALLOON POP", "white", 84,
                             (self.game.window_rect.centerx, self.game.window_rect.centery - 100))
-        self.text_titleBot = AddText("BALLOON POP", "white", 84,
+        self.text_titleBot = AddText("BALLOON POP", "gray", 84,
                             (self.game.window_rect.centerx, self.game.window_rect.centery - 94))
 
         # Buttons
