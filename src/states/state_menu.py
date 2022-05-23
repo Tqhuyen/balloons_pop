@@ -1,11 +1,10 @@
-import pygame
-
 from src.gui.button import Button
 from src.assets.text import AddText
 from src.assets.image import AddImage
 
 from src.states.base import State
 from src.states.state_options import OptionsState
+from src.states.state_transition import TransitionState
 
 class MainMenuState(State):
     def __init__(self, game):
@@ -31,7 +30,9 @@ class MainMenuState(State):
 
     def update(self, dt):
         if self.btn_start.pressed:
-            pass
+            new_state = TransitionState(self.game)
+            new_state.enter_state()
+            self.btn_start.pressed = False
 
         if self.btn_options.pressed:
             new_state = OptionsState(self.game)
