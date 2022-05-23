@@ -9,8 +9,8 @@ class LogoState(State):
     def __init__(self, game):
         super(LogoState, self).__init__(game)
 
-        # Logo
-        self.logo_img = AddImage("../resources/images/Logo.png", self.game.window_rect.center)
+        # Image Logo
+        self.img_logo = AddImage("../resources/images/Logo.png", self.game.window_rect.center)
         self.time_active = 0
 
     def update(self, dt):
@@ -29,5 +29,7 @@ class LogoState(State):
 
 
     def render(self, window):
+        # Background
         window.fill(pygame.Color("black"))
-        self.logo_img.render(window)
+        # Image
+        self.img_logo.render(window)

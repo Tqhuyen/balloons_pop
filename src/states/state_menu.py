@@ -5,21 +5,20 @@ from src.assets.text import AddText
 from src.assets.image import AddImage
 
 from src.states.base import State
+from src.states.state_options import OptionsState
 
 class MainMenuState(State):
     def __init__(self, game):
         super(MainMenuState, self).__init__(game)
 
-        # Background
+        # Images Background
         self.img_background = AddImage("../resources/images/Sky.png", self.game.window_rect.center)
-
-        # Balloons
         self.img_balloons = AddImage("../resources/images/Balloons.png", self.game.window_rect.center)
 
-        # Title
-        self.text_titleTop = AddText("BALLOON POP", "white", 84,
+        # Text Title
+        self.txt_ttl_top = AddText("BALLOON POP", "white", 84,
                             (self.game.window_rect.centerx, self.game.window_rect.centery - 100))
-        self.text_titleBot = AddText("BALLOON POP", "gray", 84,
+        self.txt_ttl_bot = AddText("BALLOON POP", "gray", 84,
                             (self.game.window_rect.centerx, self.game.window_rect.centery - 94))
 
         # Buttons
@@ -35,17 +34,22 @@ class MainMenuState(State):
             pass
 
         if self.btn_options.pressed:
-            pass
+            new_state = OptionsState(self.game)
+            new_state.enter_state()
+            self.btn_options.pressed = False
 
         if self.btn_quit.pressed:
             self.game.playing = False
             self.game.running = False
 
     def render(self, window):
+        # Background
         self.img_background.render(window)
         self.img_balloons.render(window)
-        self.text_titleBot.render(window)
-        self.text_titleTop.render(window)
+        # Texts
+        self.txt_ttl_bot.render(window)
+        self.txt_ttl_top.render(window)
+        # Buttons
         self.btn_start.render(window)
         self.btn_options.render(window)
         self.btn_quit.render(window)
