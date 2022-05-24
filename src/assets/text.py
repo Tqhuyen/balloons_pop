@@ -5,11 +5,11 @@ class AddText:
         try:
             self.font = pygame.font.Font("../resources/fonts/SweetUnicorn.ttf", size)
             self.text = self.font.render(text, True, pygame.Color(color))
-            self.text_rect = self.text.get_rect(center=pos)
+            self.rect = self.text.get_rect(center=pos)
         except FileNotFoundError:
             raise FileNotFoundError("The File cannot be found in the 'resources/fonts' folder!")
         else:
             self.font = pygame.font.Font(None, size)
 
     def render(self, window):
-        window.blit(self.text, self.text_rect)
+        window.blit(self.text, self.rect)

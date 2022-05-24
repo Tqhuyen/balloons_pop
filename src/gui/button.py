@@ -44,7 +44,7 @@ class Button:
     def anim_button(self):
         # Elevation Logic
         self.top_rect.y = self.original_y_pos - self.dynamic_elevation
-        self.text.text_rect.center = self.top_rect.center
+        self.text.rect.center = self.top_rect.center
         self.bottom_rect.midtop = self.top_rect.midtop
         self.bottom_rect.height = self.top_rect.height + self.dynamic_elevation
 
