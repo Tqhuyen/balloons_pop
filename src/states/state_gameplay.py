@@ -6,6 +6,7 @@ from cvzone.HandTrackingModule import HandDetector
 
 from src import commons
 from src.states.base import State
+from src.states.state_gameover import GameOverState
 from src.enemies.balloon import Balloon
 
 from src.assets.text import AddText
@@ -94,9 +95,13 @@ class GamePlayState(State):
     def render(self, window):
         commons.time_remain = int(self.total_time - (time.time() - self.start_time))
         if commons.time_remain <= 0:
+            new_state = GameOverState(self.game)
+            new_state.enter_state()
             pygame.mixer.music.stop()
             pygame.mixer.music.unload()
-
+            pygame.mixer.music.load("../resources/music/relax_music.mp3")
+            pygame.mixer.music.set_volume(commons.music_volume)
+            pygame.mixer.music.play(-1)
         else:
             # Updates
             self.update_event()
