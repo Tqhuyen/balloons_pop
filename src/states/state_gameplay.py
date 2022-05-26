@@ -1,15 +1,17 @@
-import pygame
 import numpy as np
 import cv2
 import time
 from cvzone.HandTrackingModule import HandDetector
 
 from src import commons
+
 from src.states.base import State
 from src.states.state_gameover import GameOverState
-from src.enemies.balloon import Balloon
+from src.states.state_pause import PauseState
 
+from src.enemies.balloon import Balloon
 from src.assets.text import AddText
+from src.assets.music import *
 
 class GamePlayState(State):
     def __init__(self, game):
@@ -90,6 +92,8 @@ class GamePlayState(State):
 
     def update_event(self):
         if self.game.pause:
+            new_state = PauseState(self.game)
+            new_state.enter_state()
             self.game.pause = False
 
     def render(self, window):
@@ -97,11 +101,7 @@ class GamePlayState(State):
         if commons.time_remain <= 0:
             new_state = GameOverState(self.game)
             new_state.enter_state()
-            pygame.mixer.music.stop()
-            pygame.mixer.music.unload()
-            pygame.mixer.music.load("../resources/music/relax_music.mp3")
-            pygame.mixer.music.set_volume(commons.music_volume)
-            pygame.mixer.music.play(-1)
+            load_music("../resources/music/relax_music.mp3", commons.music_volume)
         else:
             # Updates
             self.update_event()

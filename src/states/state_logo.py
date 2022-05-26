@@ -1,8 +1,10 @@
-import pygame
 from src import commons
-from src.assets.image import AddImage
+
 from src.states.base import State
 from src.states.state_menu import MainMenuState
+
+from src.assets.image import AddImage
+from src.assets.music import *
 
 
 class LogoState(State):
@@ -20,12 +22,7 @@ class LogoState(State):
             new_state = MainMenuState(self.game)
             new_state.enter_state()
             # Music
-            try:
-                pygame.mixer.music.load("../resources/music/relax_music.mp3")
-                pygame.mixer.music.set_volume(commons.music_volume)
-                pygame.mixer.music.play(-1)
-            except FileNotFoundError:
-                raise FileNotFoundError("The File cannot be found in the 'resources/fonts' folder!")
+            load_music("../resources/music/relax_music.mp3", commons.music_volume)
 
 
     def render(self, window):

@@ -1,9 +1,11 @@
-import pygame
 from src import commons
-from src.assets.text import AddText
 
 from src.states.base import State
 from src.states.state_gameplay import GamePlayState
+
+from src.assets.text import AddText
+from src.assets.music import *
+
 
 class TransitionState(State):
     def __init__(self, game):
@@ -19,10 +21,7 @@ class TransitionState(State):
             new_state = GamePlayState(self.game)
             new_state.enter_state()
             # Music
-            pygame.mixer.music.stop()
-            pygame.mixer.music.load("../resources/music/energetic_music.mp3")
-            pygame.mixer.music.set_volume(commons.music_volume)
-            pygame.mixer.music.play(-1)
+            load_music("../resources/music/energetic_music.mp3", commons.music_volume)
 
     def render(self, window):
         # Background

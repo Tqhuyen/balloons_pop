@@ -1,10 +1,10 @@
-from src.gui.button import Button
-from src.assets.text import AddText
-from src.assets.image import AddImage
-
 from src.states.base import State
 from src.states.state_options import OptionsState
 from src.states.state_transition import TransitionState
+
+from src.gui.button import Button
+from src.assets.text import AddText
+from src.assets.image import AddImage
 
 class MainMenuState(State):
     def __init__(self, game):
