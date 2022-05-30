@@ -21,7 +21,7 @@ class TransitionState(State):
             new_state = GamePlayState(self.game)
             new_state.enter_state()
             # Music
-            load_music("../resources/music/energetic_music.mp3", commons.music_volume)
+            load_music("../src/resources/music/energetic_music.mp3", commons.music_volume)
 
     def render(self, window):
         # Background

@@ -11,8 +11,8 @@ class MainMenuState(State):
         super(MainMenuState, self).__init__(game)
 
         # Images Background
-        self.img_background = AddImage("../resources/images/Sky.png", self.game.window_rect.center)
-        self.img_balloons = AddImage("../resources/images/Balloons.png", self.game.window_rect.center)
+        self.img_background = AddImage("../src/resources/images/Sky.png", self.game.window_rect.center)
+        self.img_balloons = AddImage("../src/resources/images/Balloons.png", self.game.window_rect.center)
 
         # Text Title
         self.txt_ttl_top = AddText("BALLOON POP", "white", 84,

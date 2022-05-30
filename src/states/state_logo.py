@@ -12,7 +12,7 @@ class LogoState(State):
         super(LogoState, self).__init__(game)
 
         # Image Logo
-        self.img_logo = AddImage("../resources/images/Logo.png", self.game.window_rect.center)
+        self.img_logo = AddImage("../src/resources/images/Logo.png", self.game.window_rect.center)
         self.time_active = 0
 
     def update(self, dt):
@@ -22,7 +22,7 @@ class LogoState(State):
             new_state = MainMenuState(self.game)
             new_state.enter_state()
             # Music
-            load_music("../resources/music/relax_music.mp3", commons.music_volume)
+            load_music("../src/resources/music/relax_music.mp3", commons.music_volume)
 
 
     def render(self, window):

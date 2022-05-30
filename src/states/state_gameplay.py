@@ -23,13 +23,13 @@ class GamePlayState(State):
         self.cap.set(4, self.game.window_rect.height * 2)
 
         # Balloons
-        self.bal_red = Balloon(game, "../resources/images/Balloons-Red.png", 412, commons.speed_balloon)
-        self.bal_black = Balloon(game, "../resources/images/Balloons-Black.png", 624, commons.speed_balloon)
-        self.bal_green = Balloon(game, "../resources/images/Balloons_Green.png", 212, commons.speed_balloon)
-        self.bal_green_bl = Balloon(game, "../resources/images/Balloons_GreenBlue.png", 824, commons.speed_balloon)
+        self.bal_red = Balloon(game, "../src/resources/images/Balloons-Red.png", 412, commons.speed_balloon)
+        self.bal_black = Balloon(game, "../src/resources/images/Balloons-Black.png", 624, commons.speed_balloon)
+        self.bal_green = Balloon(game, "../src/resources/images/Balloons_Green.png", 212, commons.speed_balloon)
+        self.bal_green_bl = Balloon(game, "../src/resources/images/Balloons_GreenBlue.png", 824, commons.speed_balloon)
 
         # Sound Balloon Pop
-        self.sfx_pop = pygame.mixer.Sound("../resources/sounds/pop_balloon.wav")
+        self.sfx_pop = pygame.mixer.Sound("../src/resources/sounds/pop_balloon.wav")
         self.sfx_pop.set_volume(commons.sfx_volume)
 
         # Hand Detector
@@ -101,7 +101,7 @@ class GamePlayState(State):
         if commons.time_remain <= 0:
             new_state = GameOverState(self.game)
             new_state.enter_state()
-            load_music("../resources/music/relax_music.mp3", commons.music_volume)
+            load_music("../src/resources/music/relax_music.mp3", commons.music_volume)
         else:
             # Updates
             self.update_event()

@@ -21,7 +21,7 @@ class Button:
         self.text = AddText(text, 'white', 20, self.top_rect.center)
 
         # Sound
-        self.btn_click = pygame.mixer.Sound("../resources/sounds/button_click.wav")
+        self.btn_click = pygame.mixer.Sound("../src/resources/sounds/button_click.wav")
         self.btn_click.set_volume(commons.sfx_volume)
 
     def check_click(self):

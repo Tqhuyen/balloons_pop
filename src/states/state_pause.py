@@ -31,7 +31,7 @@ class PauseState(State):
         if self.btn_menu.pressed:
             while len(self.game.state_stack) > 2:
                 self.game.state_stack.pop()
-                load_music("../resources/music/relax_music.mp3", commons.music_volume)
+                load_music("../src/resources/music/relax_music.mp3", commons.music_volume)
                 self.btn_menu.pressed = False
 
     def render(self, window):
