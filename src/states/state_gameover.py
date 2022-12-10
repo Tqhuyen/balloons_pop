@@ -10,7 +10,7 @@ class GameOverState(State):
         super(GameOverState, self).__init__(game)
         self.high_score = ''
         # Background Image
-        self.img_background = AddImage("../src/resources/images/Sky.png", self.game.window_rect.center)
+        self.img_background = AddImage("./src/resources/images/Sky.png", self.game.window_rect.center)
 
         # Texts
         self.txt_ttl_top = AddText("TIME IS UP", "white", 56,
@@ -41,7 +41,7 @@ class GameOverState(State):
                 self.btn_menu.pressed = False
 
     def update_score(self):
-        with open("../src/resources/txt/high_score.txt", "r+") as f:
+        with open("./src/resources/txt/high_score.txt", "r+") as f:
             self.high_score = f.readline()
             f.seek(0)
             if self.high_score < str(commons.score):

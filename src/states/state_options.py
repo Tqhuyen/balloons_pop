@@ -14,7 +14,7 @@ class OptionsState(State):
         super(OptionsState, self).__init__(game)
 
         # Image Background
-        self.img_background = AddImage("../src/resources/images/Sky.png", self.game.window_rect.center)
+        self.img_background = AddImage("./src/resources/images/Sky.png", self.game.window_rect.center)
 
         # Text Title
         self.txt_ttl_top = AddText("OPTIONS", 'white', 46,

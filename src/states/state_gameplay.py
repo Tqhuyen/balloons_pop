@@ -23,13 +23,13 @@ class GamePlayState(State):
         self.cap.set(4, self.game.window_rect.height * 2)
 
         # Balloons
-        self.bal_red = Balloon(game, "../src/resources/images/Balloons-Red.png", 412, commons.speed_balloon)
-        self.bal_black = Balloon(game, "../src/resources/images/Balloons-Black.png", 624, commons.speed_balloon)
-        self.bal_green = Balloon(game, "../src/resources/images/Balloons_Green.png", 212, commons.speed_balloon)
-        self.bal_green_bl = Balloon(game, "../src/resources/images/Balloons_GreenBlue.png", 824, commons.speed_balloon)
+        self.bal_red = Balloon(game, "./src/resources/images/Balloons-Red.png", 624, commons.speed_balloon)
+        self.bal_black = Balloon(game, "./src/resources/images/Balloons-Black.png", 624, commons.speed_balloon)
+        self.bal_green = Balloon(game, "./src/resources/images/Balloons_Green.png", 624, commons.speed_balloon)
+        self.bal_green_bl = Balloon(game, "./src/resources/images/Balloons_GreenBlue.png", 624, commons.speed_balloon)
 
         # Sound Balloon Pop
-        self.sfx_pop = pygame.mixer.Sound("../src/resources/sounds/pop_balloon.wav")
+        self.sfx_pop = pygame.mixer.Sound("./src/resources/sounds/pop_balloon.wav")
         self.sfx_pop.set_volume(commons.sfx_volume)
 
         # Hand Detector
@@ -43,38 +43,41 @@ class GamePlayState(State):
     def update_balloon(self, window):
         if self.hands:
             hand = self.hands[0]
-            x, y = hand['lmList'][8]
-            if self.bal_red.image.rect.collidepoint(x, y):
-                commons.score += commons.score_red
-                self.sfx_pop.play()
-                point_red = AddText(f"+{commons.score_red}", 'blue', 40,
-                                    (self.bal_red.image.rect.x, self.bal_red.image.rect.y))
-                point_red.render(window)
-                self.bal_red.reset_balloon()
+            list_of_points = hand['lmList']
+            for point in list_of_points:
+                x , y = point
+                # print(self.bal_red.image.rect.collidelist(x,y))
+                if self.bal_red.image.rect.collidepoint(x, y):
+                    commons.score += commons.score_red
+                    self.sfx_pop.play()
+                    point_red = AddText(f"+{commons.score_red}", 'blue', 40,
+                                        (self.bal_red.image.rect.x, self.bal_red.image.rect.y))
+                    point_red.render(window)
+                    self.bal_red.reset_balloon()
 
-            if self.bal_black.image.rect.collidepoint(x, y):
-                commons.score -= commons.score_black
-                self.sfx_pop.play()
-                point_black = AddText(f"-{commons.score_black}", 'red', 40,
-                                    (self.bal_black.image.rect.x, self.bal_black.image.rect.y))
-                point_black.render(window)
-                self.bal_black.reset_balloon()
+                if self.bal_black.image.rect.collidepoint(x, y):
+                    commons.score -= commons.score_black
+                    self.sfx_pop.play()
+                    point_black = AddText(f"-{commons.score_black}", 'red', 40,
+                                        (self.bal_black.image.rect.x, self.bal_black.image.rect.y))
+                    point_black.render(window)
+                    self.bal_black.reset_balloon()
 
-            if self.bal_green.image.rect.collidepoint(x, y):
-                commons.score += commons.score_green
-                self.sfx_pop.play()
-                point_green = AddText(f"+{commons.score_green}", 'blue', 40,
-                                    (self.bal_green.image.rect.x, self.bal_green.image.rect.y))
-                point_green.render(window)
-                self.bal_green.reset_balloon()
+                if self.bal_green.image.rect.collidepoint(x, y):
+                    commons.score += commons.score_green
+                    self.sfx_pop.play()
+                    point_green = AddText(f"+{commons.score_green}", 'blue', 40,
+                                        (self.bal_green.image.rect.x, self.bal_green.image.rect.y))
+                    point_green.render(window)
+                    self.bal_green.reset_balloon()
 
-            if self.bal_green_bl.image.rect.collidepoint(x, y):
-                commons.score += commons.score_green_bl
-                self.sfx_pop.play()
-                point_green_bl = AddText(f"+{commons.score_green_bl}", 'blue', 40,
-                                    (self.bal_green_bl.image.rect.x, self.bal_green_bl.image.rect.y))
-                point_green_bl.render(window)
-                self.bal_green_bl.reset_balloon()
+                if self.bal_green_bl.image.rect.collidepoint(x, y):
+                    commons.score += commons.score_green_bl
+                    self.sfx_pop.play()
+                    point_green_bl = AddText(f"+{commons.score_green_bl}", 'blue', 40,
+                                        (self.bal_green_bl.image.rect.x, self.bal_green_bl.image.rect.y))
+                    point_green_bl.render(window)
+                    self.bal_green_bl.reset_balloon()
 
     def update_cam(self, window):
         success, self.img = self.cap.read()
@@ -101,7 +104,7 @@ class GamePlayState(State):
         if commons.time_remain <= 0:
             new_state = GameOverState(self.game)
             new_state.enter_state()
-            load_music("../src/resources/music/relax_music.mp3", commons.music_volume)
+            load_music("./src/resources/music/relax_music.mp3", commons.music_volume)
         else:
             # Updates
             self.update_event()

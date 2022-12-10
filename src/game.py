@@ -1,6 +1,6 @@
-import pygame
-import commons
-from states.state_logo import LogoState
+import pygame 
+from src import commons
+from src.states.state_logo import LogoState
 
 
 class Game():
