@@ -45,7 +45,8 @@ class GamePlayState(State):
             hand = self.hands[0]
             list_of_points = hand['lmList']
             for point in list_of_points:
-                x , y = point
+                print(point)
+                x , y, z = point
                 # print(self.bal_red.image.rect.collidelist(x,y))
                 if self.bal_red.image.rect.collidepoint(x, y):
                     commons.score += commons.score_red

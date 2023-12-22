@@ -1,4 +1,8 @@
 import pygame 
+import sys, os
+source = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(source) 
+
 from src import commons
 from src.states.state_logo import LogoState
 
